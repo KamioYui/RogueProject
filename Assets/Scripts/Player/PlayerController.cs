@@ -6,11 +6,19 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject[] weapons;
+    //当前正在使用的武器id
+    private int weaponNum;
     public Vector2 inputDirection;
     public PlayerInputAction inputControl;
     private Rigidbody2D rb;
     public float speed;
 
+    private void Start()
+    {
+        //设置武器0为初始武器
+        weapons[0].SetActive(true);
+    }
     private void Awake()
     {
         inputControl = new PlayerInputAction();
@@ -57,4 +65,5 @@ public class PlayerController : MonoBehaviour
         //人物翻转
         transform.localScale = new Vector3(faceDir, 1, 1);
     }
+
 }
